@@ -1,75 +1,86 @@
-# React + TypeScript + Vite
+# My Tasks — Todo Management App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive task management web application built with **React**, **TypeScript**, **Vite**, and **Tailwind CSS**. It lets users organize daily and weekly tasks with priority tags, live search, progress summaries, and automatic `localStorage` persistence.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- **Onboarding Screen:** Clean welcome flow (`Onboarding`) saved to `localStorage` so returning users jump straight into their dashboard.
+- **Task CRUD Operations:** Create, edit, toggle completion status, and delete tasks via a modal form (`TaskModal`) with validation.
+- **Weekly Organization:** Interactive 7-day week selector (`WeekStrip`) and collapsible weekly task groups (`WeekSection`) with completed/open counters.
+- **Weekly Summary Cards:** At-a-glance metrics (`SummaryCards`) tracking completed vs. pending tasks for the week.
+- **Instant Search:** Real-time filtering (`SearchView`) across task titles and descriptions.
+- **Local Persistence:** Pre-populated with starter tasks (`seedTasks`) and automatically synced to browser `localStorage`.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Framework:** React + TypeScript
+- **Build Tool:** Vite
+- **Styling:** Tailwind CSS
+- **Icons:** Lucide React
+- **Package Manager:** Yarn
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Project Structure
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```text
+frontend/
+├── src/
+│   ├── components/
+│   │   ├── Onboarding.tsx      # Welcome screen for first-time visitors
+│   │   ├── SearchHeader.tsx    # Top dashboard header with quick actions
+│   │   ├── SearchView.tsx      # Full-screen real-time task search
+│   │   ├── SummaryCards.tsx    # Weekly completed & pending task counters
+│   │   ├── TaskCard.tsx        # Individual task item with toggle/edit/delete
+│   │   ├── TaskModal.tsx       # Modal form to create or update tasks
+│   │   ├── WeekSection.tsx     # Collapsible weekly task list
+│   │   └── WeekStrip.tsx       # 7-day interactive calendar strip
+│   ├── data/
+│   │   └── seedTask.ts         # Default starter tasks
+│   ├── pages/
+│   │   └── Dashboard.tsx       # Main task dashboard view
+│   ├── types/
+│   │   └── task.ts             # Shared TypeScript interfaces
+│   ├── utils/
+│   │   └── dateUtils.ts        # Date & week formatting helpers
+│   ├── App.tsx                 # Root state, localStorage sync & routing
+│   └── main.tsx                # Application entry point
+├── package.json
+└── yarn.lock
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Getting Started
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Prerequisites
 
-```
+- **Node.js** (v18 or higher recommended)
+- **Yarn** (`corepack enable` or `npm install -g yarn`)
+
+### Installation & Running Locally
+
+1. **Clone the repository:**
+   ```bash
+   git clone <your-repo-url>
+   cd todo-assignment/frontend
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   yarn install
+   ```
+
+3. **Start the development server:**
+   ```bash
+   yarn dev
+   ```
+
+4. **Build for production:**
+   ```bash
+   yarn build
+   ```
