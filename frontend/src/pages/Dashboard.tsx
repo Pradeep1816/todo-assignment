@@ -17,6 +17,7 @@ import {
   sameDay,
   startOfWeek,
 } from '../utils/dateUtils';
+import SearchHeader from '../components/SearchHeader';
 
 interface DashboardProps {
   tasks: Task[];
@@ -103,7 +104,7 @@ export default function Dashboard({
       <div className="mx-auto max-w-5xl px-4 pb-8 pt-6 sm:px-7 lg:px-10">
 
         {/* Header */}
-        <Header onSearch={onSearch} />
+        <SearchHeader onSearch={onSearch} />
 
         {/* Week selector */}
         <div className="mt-7 rounded-2xl border border-slate-100 bg-white p-3 shadow-sm shadow-slate-100">

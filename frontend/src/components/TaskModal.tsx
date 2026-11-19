@@ -2,15 +2,16 @@
 import { useEffect, useState } from 'react';
 import type { ChangeEvent, FormEvent } from 'react';
 import { X } from 'lucide-react';
+import type {Task} from "../types/task"
 
-interface Task {
-  id?: string;
-  title: string;
-  description: string;
-  dueDate: string;
-  priority: 'Low' | 'Medium' | 'High';
-  status: 'In Progress' | 'Completed';
-}
+// interface Task {
+//   id?: string;
+//   title: string;
+//   description: string;
+//   dueDate: string;
+//   priority: 'Low' | 'Medium' | 'High';
+//   status: 'In Progress' | 'Completed';
+// }
 
 interface TaskForm {
   title: string;
@@ -22,7 +23,7 @@ interface TaskForm {
 }
 
 interface TaskModalProps {
-  task: Task | undefined;
+  task: Task | null;
   onClose: () => void;
   onSave: (task: Task) => void;
 }
@@ -43,6 +44,7 @@ const localInputDate = (value: Date): string => {
   ).padStart(2, '0')}-${String(value.getDate()).padStart(2, '0')}`;
 };
 
+// TaskModal components
 export default function TaskModal({
   task,
   onClose,
@@ -101,11 +103,13 @@ export default function TaskModal({
       `${form.date}T${form.time}`
     ).toISOString();
 
-    onSave({
-      ...(task || {}),
-      ...form,
+   onSave({
+      id: task?.id ?? '',
       title: form.title.trim(),
+      description: form.description,
       dueDate,
+      priority: form.priority,
+      status: form.status,
     });
   };
 

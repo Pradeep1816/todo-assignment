@@ -1,6 +1,10 @@
 import { CheckSquare, Clock3 } from 'lucide-react'
 
-export default function SummaryCards({ completed, open }) {
+interface SummaryCardsProps{
+  completed:number,
+  open:number
+}
+export default function SummaryCards({ completed, open }:SummaryCardsProps) {
   return (
     <div className="grid grid-cols-2 gap-3">
       <div className="rounded-2xl bg-[#eef1ff] p-4">

@@ -1,6 +1,12 @@
 import { startOfWeek } from '../utils/dateUtils'
 
-export default function WeekStrip({ selectedDate, onSelect }) {
+interface WeekStripProps{
+  selectedDate:Date | string;
+  onSelect:(date:Date)=>void
+}
+
+
+export default function WeekStrip({ selectedDate, onSelect }:WeekStripProps) {
   const monday = startOfWeek(selectedDate)
   const days = Array.from({ length: 7 }, (_, i) => {
     const d = new Date(monday)

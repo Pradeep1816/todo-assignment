@@ -1,4 +1,4 @@
-import { useState,useEffect } from 'react'
+import { useState,useEffect, useMemo } from 'react'
 import './App.css'
 import Onboarding from './components/Onboarding'
 import { seedTasks } from './data/seedTask';
@@ -18,11 +18,12 @@ function App() {
       return seedTasks 
     }
   });
-  const [modalTask, setModalTask] = useState<Task | undefined>(undefined)
+  const [modalTask, setModalTask] = useState<Task | null | undefined>(undefined)
   const [searchOpen, setSearchOpen] = useState(false)
   const [query, setQuery] = useState('')
 
   useEffect(() => { localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks)) }, [tasks])
+  
   const filteredTasks = useMemo(() => {
     const q = query.trim().toLowerCase()
     if (!q) return tasks
@@ -57,8 +58,4 @@ function App() {
   </>
 }
 
-export default App
-function useMemo(arg0: () => any, arg1: any[]) {
-  throw new Error('Function not implemented.');
-}
-
+export default App;
