@@ -4,8 +4,6 @@
 import { useMemo, useState } from 'react';
 import { Plus, CalendarDays } from 'lucide-react';
 import type { Task } from '../types/task';
-
-import Header from '../components/SearchHeader';
 import WeekStrip from '../components/WeekStript';
 import SummaryCards from '../components/SummaryCards';
 import ProgressBar from '../components/ProgressBar';

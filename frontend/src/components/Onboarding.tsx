@@ -1,7 +1,4 @@
 import { Waves } from "lucide-react";
-import { useState } from "react";
-
-const storageKey = 'onboardingStarted';
 
 export  default function Onboarding({onStart}: {onStart?: () => void}) {
 
